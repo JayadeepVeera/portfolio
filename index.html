@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Jayadeep Veera - Portfolio</title>
+<style>
+:root{
+  --bg-gradient: linear-gradient(-45deg, #0e172a, #1a1f35, #102A44, #162029);
+  --text-primary:#f5f7fa;
+  --text-secondary:#b0bcd0;
+  --accent-1:#00d4ff;   /* cool cyan/teal */
+  --accent-2:#f39c12;   /* vivid orange-amber */
+  --card-bg:rgba(26,35,48,0.92);
+  --card-border:#2e3a4f;
+}
+
+body {
+  margin: 0;
+  font-family:'Segoe UI',Tahoma,sans-serif;
+  background: var(--bg-gradient);
+  background-size:400% 400%;
+  animation: gradientBG 16s ease infinite;
+  color: var(--text-primary);
+  scroll-behavior: smooth;
+}
+@keyframes gradientBG{
+  0%{background-position:0 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0 50%;}
+}
+
+a{color:var(--accent-1);text-decoration:none;}
+a:hover{color:var(--accent-2);}
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(10,15,20,0.9);
+  display:flex;justify-content:space-between;align-items:center;
+  padding:16px 28px;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  backdrop-filter: blur(6px);
+}
+header h1{color:var(--accent-1);font-size:1.9em;font-weight:800;}
+nav a{color:var(--text-primary);margin-left:20px;font-weight:600;position:relative;}
+nav a::after{content:'';display:block;width:0;height:2.4px;background:var(--accent-2);
+  transition:width 0.3s ease;position:absolute;bottom:-6px;left:0;}
+nav a:hover::after{width:100%;}
+
+main{max-width:950px;margin:40px auto 80px;padding:0 18px;display:flex;flex-direction:column;gap:70px;}
+h2{text-align:center;font-size:2.3em;color:var(--accent-1);margin-bottom:18px;}
+p,li{color:var(--text-secondary);line-height:1.65;font-size:1.08em;}
+section{opacity:0;transform:translateY(50px);transition:opacity 0.7s ease,transform 0.7s ease;}
+section.visible{opacity:1;transform:translateY(0);}
+
+/* About */
+#about{display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:center;}
+.about-pic{
+  width:200px;height:200px;border-radius:50%;overflow:hidden;
+  border:4px solid var(--accent-2);box-shadow:0 0 22px var(--accent-1);
+}
+.about-pic img{width:100%;height:100%;object-fit:cover;}
+.about-text{flex:1 1 420px;max-width:520px;}
+.about-text p{white-space:pre-line;}
+
+/* Skills marquee */
+.skills-marquee-container{
+  overflow:hidden;border-radius:26px;background:var(--card-bg);
+  padding:14px 0;box-shadow:0 0 14px rgba(0,212,255,0.35);
+}
+.skills-marquee{display:inline-flex;gap:20px;animation:marquee 35s linear infinite;white-space:nowrap;}
+.skill-tag{
+  color:var(--accent-1);background:rgba(0,212,255,0.08);padding:10px 18px;
+  font-weight:700;font-size:1.05em;border-radius:20px;display:flex;align-items:center;gap:8px;
+  transition:background 0.25s;
+}
+.skill-tag:hover{background:var(--accent-2);color:#0e1a2b;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* Projects */
+.projects-container{display:flex;flex-wrap:wrap;gap:24px;justify-content:center;}
+.project-item{
+  background:var(--card-bg);border-radius:14px;padding:20px 22px;max-width:340px;
+  box-shadow:0 0 18px rgba(0,0,0,0.65);border:1px solid var(--card-border);
+  display:flex;flex-direction:column;
+}
+.project-item h3{color:var(--accent-2);margin-bottom:12px;}
+.project-item p{flex-grow:1;margin-bottom:14px;}
+.project-links{display:flex;gap:14px;}
+.project-links a{
+  background:var(--accent-1);padding:7px 14px;border-radius:20px;
+  color:#0e1a2b;font-weight:600;transition:background 0.25s;
+}
+.project-links a:hover{background:var(--accent-2);}
+
+/* Experience / Education */
+#experience ul{list-style:disc;padding-left:25px;}
+#experience b{color:var(--accent-2);}
+.edu-item{
+  background:var(--card-bg);padding:16px 20px;border-radius:12px;margin-bottom:12px;
+  box-shadow:0 0 12px rgba(249,188,96,0.18);
+}
+.edu-item h4{color:var(--accent-2);}
+
+/* Certifications */
+.cert-card{
+  background:var(--card-bg);border-radius:12px;padding:16px 20px;margin-bottom:20px;
+  color:var(--accent-2);font-weight:700;display:flex;align-items:center;gap:14px;
+  box-shadow:0 0 12px rgba(249,188,96,0.18);
+}
+.cert-card span.emoji{font-size:1.3em;}
+
+/* Contact */
+#contact{
+  background:rgba(18,26,34,0.88);padding:30px 18px;border-radius:16px;
+  box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+.contact-icons{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:24px;}
+.contact-icon{color:var(--accent-1);font-size:1.3em;display:flex;flex-direction:column;align-items:center;}
+.contact-icon span{margin-top:5px;font-size:0.82em;color:var(--text-primary);}
+.contact-icon:hover{color:var(--accent-2);}
+form{max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:14px;}
+form input,form textarea{
+  background:var(--card-bg);border:1.5px solid #2a3442;color:var(--text-primary);
+  font-size:1rem;padding:12px 16px;border-radius:16px;
+}
+form input:focus,form textarea:focus{border-color:var(--accent-1);}
+form button{
+  background:var(--accent-1);border:none;padding:12px 0;font-weight:700;font-size:1.1em;
+  border-radius:20px;color:#0e1a2b;cursor:pointer;transition:background 0.25s;
+}
+form button:hover{background:var(--accent-2);}
+footer{text-align:center;padding:14px;color:var(--text-secondary);margin-top:40px;font-size:1em;}
+
+@media(max-width:900px){
+  #about{flex-direction:column;text-align:center;}
+  .about-pic{margin-bottom:16px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Jayadeep Veera</h1>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+<section id="about">
+  <div class="about-pic"><img src="C:\Users\asus\Downloads\jai image.jpeg" alt=""></div>
+  <div class="about-text">
+    <h2>About Me</h2>
+    <p>👋 Hi, I'm Jayadeep Veera — Machine Learning Engineer & Data Scientist focusing on intelligent systems that solve real problems. Skilled in AI, deep learning, NLP, and ML pipelines.<br><br>
+    🎓 Final-year B.Tech in AI & ML at SRKR Engineering College (CGPA: 9.0/10). I love collaboration, learning, and delivering innovative AI-driven solutions that create impact.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills-marquee-container">
+    <div class="skills-marquee">
+      <div class="skill-tag">🐍 Python</div><div class="skill-tag">☕ Java</div><div class="skill-tag">🖥 HTML</div>
+      <div class="skill-tag">🎨 CSS</div><div class="skill-tag">⚡ JavaScript</div><div class="skill-tag">🗄 SQL</div>
+      <div class="skill-tag">📊 Tableau</div><div class="skill-tag">📈 Power BI</div><div class="skill-tag">🤖 TensorFlow</div>
+      <div class="skill-tag">⚙ Scikit-learn</div><div class="skill-tag">📦 Pandas</div><div class="skill-tag">🔢 NumPy</div>
+      <div class="skill-tag">🌐 Flask</div><div class="skill-tag">🚀 FastAPI</div><div class="skill-tag">🐋 Docker</div>
+      <div class="skill-tag">☁ Cloud</div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects-container">
+    
+    <div class="project-item"><h3>🧠 MRI Tumor Segmentation</h3>
+      <p>U-Net for MRI tumor segmentation & classification; deployed on cloud.</p>
+      <div class="project-links"><a href="https://github.com/JayadeepVeera/BrainTumor">GitHub</a><a href="https://github.com/JayadeepVeera/BrainTumor">Demo</a></div>
+    </div>
+    <div class="project-item"><h3>🏦 Loan Eligibility Predictor</h3>
+      <p>Flask app with Random Forest for approvals; CI/CD pipeline deployment.</p>
+      <div class="project-links"><a href="#">GitHub</a><a href="#">Demo</a></div>
+    </div>
+<div class="project-item"><h3>🌊 Flood Risk Prediction</h3>
+      <p>XGBoost + weather data for flood risk forecasts; early-warning web tool.</p>
+      <div class="project-links"><a href="https://github.com/JayadeepVeera/machine-learning/blob/main/flood_prediction(XGBoost).ipynb">GitHub</a><a href="https://github.com/JayadeepVeera/machine-learning/blob/main/flood_prediction(XGBoost).ipynb">Demo</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+  <ul>
+    <li><b>Research Intern – ONE JOB</b> (Jul 2025 – Present):<br/>
+ • Conducted comprehensive research on AI/ML and data science topics to support EdTech content creation.<br/>
+ • Developed structured learning modules with practical applications and ensured clarity and technical depth.<br/>
+ • Collaborated with content and design teams to align materials with certification standards and learner outcomes.</li>
+  </ul>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <div class="edu-item"><h4>SRKR Engineering College</h4><p>B.Tech AI & ML (2022–2026) - CGPA: 9.0</p></div>
+  <div class="edu-item"><h4>Sasi Junior College</h4><p>Intermediate MPC - 93.8%</p></div>
+</section>
+
+<section id="certifications">
+  <h2>Certifications</h2>
+  <!-- First certification removed as requested -->
+  <div class="cert-card"><span class="emoji">🎖️</span> Machine Learning Specialization – Coursera (Stanford University)</div>
+  <div class="cert-card"><span class="emoji">📜</span> Data Science Professional Certificate – IBM</div>
+  <div class="cert-card"><span class="emoji">🏆</span> Deep Learning Specialization – deeplearning.ai</div>
+</section>
+
+<section id="contact">
+  <h2>Contact Me</h2>
+  <div class="contact-icons">
+    <a href="mailto:jayadeep@gmail.com" class="contact-icon">📧<span>Email</span></a>
+    <a href="https://www.linkedin.com/in/jayadeep-veera-1b555025b/" class="contact-icon">💼<span>LinkedIn</span></a>
+    <a href="https://github.com/JayadeepVeera" class="contact-icon">🐙<span>GitHub</span></a>
+    <a href="tel:+917386724899" class="contact-icon">📞<span>Phone</span></a>
+  </div>
+  <form id="contactForm">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+</main>
+
+<footer>&copy; 2025 Jayadeep Veera. All rights reserved.</footer>
+
+<script>
+// Scroll reveal
+const sections=document.querySelectorAll('section');
+function reveal(){
+  const trigger=window.innerHeight*0.88;
+  sections.forEach(s=>{if(s.getBoundingClientRect().top<trigger)s.classList.add('visible');});
+}
+window.addEventListener('scroll',reveal);
+window.addEventListener('load',reveal);
+
+// Contact form
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  window.location.href=`mailto:jayadeep@gmail.com?subject=Contact from ${encodeURIComponent(this.name.value)}&body=${encodeURIComponent(this.message.value)}`;
+});
+</script>
+</body>
+</html>
